@@ -9,7 +9,7 @@ import coinImage from "@/assets/images/solrain-logo.png";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "$SOLRAIN exchange", href: "/swap" },
-  { name: "DAPP", href: "/dapp" },
+  { name: "DAPP", href: "/dApp" },
   { name: "NFT Marketplace", href: "/nft-marketplace" }, 
   { name: "Roadmap", href: "/assets/solrain.pdf" },
   { name: "Gitbook", href: "https://solrain.gitbook.io" },
