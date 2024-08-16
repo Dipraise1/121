@@ -44,7 +44,10 @@ export default function Footer() {
               />
               </a>
               <a
-              href="https://www.pinksale.finance/"
+              href="
+
+
+https://gempad.app/presale/all"
               target="_blank"
               rel="noreferrer"
               >
