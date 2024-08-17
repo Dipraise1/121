@@ -41,7 +41,7 @@ export default function Tokenomics() {
               Tokenomics
             </h2>
             <div className="feature-card mt-16 pt-3 w-full max-w-3xl px-8">
-              <h3 className="text-5xl family-alex mt-4">$SORAIN</h3>
+              <h3 className="text-5xl family-alex mt-4">$SOLRAIN</h3>
               <p className="mt-4 text-lg text-center">
                 The crypto that gives you 1% APR. 3.65x your initial deposit.
                 Receive 1% per day on your initial deposit for 365 days.
@@ -50,30 +50,26 @@ export default function Tokenomics() {
               <h3 className="text-5xl family-alex mt-8">Token Supply</h3>
               <p className="mt-4 text-lg text-center">50 million $SOLRAIN tokens.</p>
               <h3 className="text-5xl family-alex mt-8">Soft Cap</h3>
-              <p className="mt-4 text-lg text-center">500 SOL</p>
-              <h3 className="text-5xl family-alex mt-8">Hard Cap</h3>
-              <p className="mt-4 text-lg text-center">1500 SOL</p>
+              <p className="mt-4 text-lg text-center">100 SOL</p>
               <ul className="mt-8 divide-y divide-sky-50/10 px-16">
-                <li className="py-4 text-lg text-center">10% private sale</li>
-                <li className="py-4 text-lg text-center">5% community wallet</li>
-                <li className="py-4 text-lg text-center">15% team</li>
-                <li className="py-4 text-lg text-center">20% presale</li>
-                <li className="py-4 text-lg text-center">15% reward pool</li>
-                <li className="py-4 text-lg text-center">10% liquidity</li>
+                <li className="py-4 text-lg text-center">20% Presale</li>
+                <li className="py-4 text-lg text-center">10% Seed Sale</li>
+                <li className="py-4 text-lg text-center">30% Drip Protocol</li>
+                <li className="py-4 text-lg text-center">5% Community Wallet</li>
+                <li className="py-4 text-lg text-center">15% Team (vested)</li>
+                <li className="py-4 text-lg text-center">10% Liquidity</li>
+                <li className="py-4 text-lg text-center">10% Marketing</li>
               </ul>
               <div className="bg-gradient-to-b from-[#423EE0] to-[#0E0D4F] divide-y divide-sky-50/10 w-full h-full py-4 px-16 mt-8 rounded-lg">
                 <h3 className="text-lg font-light text-white text-center">
-                  We sell 22.5 million tokens @ 0.001
+                  We sell 10 million $SOLRAIN tokens @ $0.02
                 </h3>
                 <h3 className="text-lg font-light text-white text-center mt-4">
-                  We will pool 5 million tokens (10%)
-                </h3>
-                <h3 className="text-lg font-light text-white text-center mt-4">
-                  Launch price $0.012
+                  We will pool 5 million $SOLRAIN tokens (10%)
                 </h3>
                 <p className="text-sm font-light text-white/50 text-center mt-4">
-                  This way we have more protocol-owned liquidity to overshadow
-                  the token liquidity.
+                  We aim to have a starting market cap of roughly $75,000 and ensure that we have more 
+                  protocol-owned liquidity to overshadow the token liquidity.
                 </p>
               </div>
             </div>

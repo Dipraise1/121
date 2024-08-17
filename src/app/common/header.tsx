@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
@@ -8,11 +8,12 @@ import coinImage from "@/assets/images/solrain-logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "$SOLRAIN exchange", href: "/swap" },
-  { name: "DAPP", href: "/dApp" },
-  { name: "NFT Marketplace", href: "/nft-marketplace" }, 
+  { name: "Solrain exchange", href: "/swap" },
+  { name: "Dapp", href: "/dApp" },
+  { name: "NFT Marketplace", href: "/nft-marketplace" },
   { name: "Roadmap", href: "/assets/solrain.pdf" },
-  { name: "Gitbook", href: "https://solrain.gitbook.io" },
+  { name: "Whitepaper", href: "/whitepaper" },
+  { name: "Gitbook docs", href: "https://solrain.gitbook.io" },
 ];
 
 const socialLinks = [
