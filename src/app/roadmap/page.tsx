@@ -308,7 +308,7 @@ export default function Roadmap() {
                 <div>
                   <h3 className="text-lg max-w-sm font-light text-white">
                     Find the perfect deal for a smooth presale on the best
-                    platform: <b>Solpad</b>
+                    platform: <b>Gempad</b>
                   </h3>
                   <p className="text-sm font-light text-white/50">
                     Our no.1 choice but we need to make a deal first
@@ -376,13 +376,7 @@ export default function Roadmap() {
                   Q3
                 </h3>
                 <div>
-                  <h3 className="text-lg max-w-sm font-light text-white">
-                    Find the smoothest DEX for transactions and then negotiate
-                    with owners to get the best deal for Launch: <b>Jupiter</b>
-                  </h3>
-                  <p className="text-sm font-light text-white/50">
-                    Our no. 1 choice but our options are open
-                  </p>
+                 
                 </div>
                 <div className="border-t mt-3 border-t-sky-50/10">
                   <div className="grid grid-cols-2 my-3 items-center">
@@ -542,7 +536,7 @@ export default function Roadmap() {
                   <div className="grid grid-cols-2 my-3 items-center">
                     <div>
                       <p className="text-lg">
-                      Launch SOLANIAN NFT BOOSTER COLLECTION.
+                      Launch SOLRANIAN NFT booster collection.
                       </p>
                     </div>
                     <div className="flex items-center gap-3">

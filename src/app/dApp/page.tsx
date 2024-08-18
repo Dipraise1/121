@@ -73,8 +73,9 @@ export default function Dapp() {
   }, [walletAddress]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-gray-900 text-white">
+    <main className="">
       <Header />
+      <section className="hero-section">
       <section className="hero-section w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto mt-16 sm:mt-24">
           <div className="inline-block mb-6">
@@ -145,6 +146,7 @@ export default function Dapp() {
         <div className="mt-10 mx-auto max-w-lg px-4">
           <DexScreener />
         </div>
+      </section>
       </section>
       <Footer />
     </main>

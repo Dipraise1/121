@@ -127,7 +127,7 @@ export default function SwapPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+    <main className="hero-section">
       <Header />
       <section className="w-full max-w-7xl mx-auto px-5 mt-32 mb-16">
         <div className="inline-block mb-10">
