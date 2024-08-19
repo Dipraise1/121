@@ -7,6 +7,7 @@ import Header from "../common/header";
 import stake from "@/assets/images/stake.png";
 import earned from "@/assets/images/earned.png";
 import withdraw from "@/assets/images/withdraw.png";
+import totalStakedImg from "@/assets/images/solrain-coin.png"; // Add an appropriate image
 import coinImage from "@/assets/images/hero-graphic.png";
 import DexScreener from "../common/dex-screener";
 import Footer from "../common/footer";
@@ -25,7 +26,6 @@ export default function Dapp() {
       try {
         const resp = await window.solana.connect();
         setWalletAddress(resp.publicKey.toString());
-        // Fetch total staked amount after wallet is connected
         fetchTotalStaked(resp.publicKey.toString());
       } catch (err) {
         console.error("Error connecting to wallet", err);
@@ -41,7 +41,6 @@ export default function Dapp() {
       setIsLoading(true);
       const connection = new Connection(network);
       const publicKey = new PublicKey(publicKeyString);
-      // Mock: Replace this with the actual logic to fetch the total staked amount
       const stakedAmount = 1000; // Replace with actual staked amount logic
       setTotalStaked(stakedAmount);
     } catch (err) {
@@ -75,7 +74,6 @@ export default function Dapp() {
   return (
     <main className="">
       <Header />
-      <section className="hero-section">
       <section className="hero-section w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto mt-16 sm:mt-24">
           <div className="inline-block mb-6">
@@ -113,7 +111,6 @@ export default function Dapp() {
                 ) : (
                   <p>Balance: {balance} SOL</p>
                 )}
-            
               </div>
             ) : (
               <button 
@@ -123,7 +120,7 @@ export default function Dapp() {
                 Connect Wallet
               </button>
             )}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 sm:mt-10 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 sm:mt-10 w-full">
               <FeatureCard
                 image={stake}
                 title="Stake SOLRAIN"
@@ -140,13 +137,18 @@ export default function Dapp() {
                 title="Emergency Withdrawal"
                 buttonText="Withdraw"
               />
+              <FeatureCard
+                image={totalStakedImg}
+                title="Total Staked"
+                buttonText="View Details"
+                amount={totalStaked} // Pass the total staked amount here
+              />
             </div>
           </div>
         </div>
         <div className="mt-10 mx-auto max-w-lg px-4">
           <DexScreener />
         </div>
-      </section>
       </section>
       <Footer />
     </main>
@@ -157,14 +159,18 @@ interface FeatureCardProps {
   image: any;
   title: string;
   buttonText: string;
+  amount?: number; // Optional prop for the total staked amount
   secondaryButtonText?: string;
 }
 
-function FeatureCard({ image, title, buttonText, secondaryButtonText }: FeatureCardProps) {
+function FeatureCard({ image, title, buttonText, amount, secondaryButtonText }: FeatureCardProps) {
   return (
     <div className="feature-card py-6 px-4 text-center bg-gray-800 rounded-lg shadow-lg">
       <Image width={60} height={60} src={image} alt={title} className="mx-auto" />
       <h3 className="text-2xl sm:text-3xl family-alex mt-4">{title}</h3>
+      {amount !== undefined && (
+        <p className="text-xl mt-2 text-yellow-400">{amount.toLocaleString()} SOLRAIN</p> // Display the amount
+      )}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4">
         <a className="cut-corners w-full sm:w-auto bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg text-white text-center" href="#">
           {buttonText}
