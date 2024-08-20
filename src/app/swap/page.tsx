@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
@@ -6,7 +6,9 @@ import Header from "../common/header";
 import Footer from "../common/footer";
 import coinImage from "@/assets/images/hero-graphic.png";
 import usdtLogo from "@/assets/images/usdt.png";
-import { ArrowDownUp } from 'lucide-react';
+import usdcLogo from "@/assets/images/usdc.png";
+import SolLogo from "@/assets/images/solrain-coin.png";
+import { ArrowDownUp, ChevronDown } from 'lucide-react';
 import { Connection, PublicKey, Transaction } from '@solana/web3.js';
 import { 
   getAssociatedTokenAddress,
@@ -16,19 +18,26 @@ import {
 } from '@solana/spl-token';
 import { createSwapInstruction } from '../../marketHelper';
 
-// Remove the SolanaProvider interface and global declaration from here
-
 // Replace these with actual addresses
 const SOLRAIN_MINT = new PublicKey('Gus6G45ZwTRB17udyLxAGsoKLxbDnDD6GWyWNPB2z2Wg');
 const USDT_MINT = new PublicKey('Es9vMFrzaCmnz2Shb9k5xkJFF2ebw7SRjmHQTDjK4gEn');
+const USDC_MINT = new PublicKey('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+
+const stablecoins = [
+  { name: 'USDT', mint: USDT_MINT, logo: usdtLogo },
+  { name: 'USDC', mint: USDC_MINT, logo: usdcLogo },
+  { name: 'SOLANA', mint: USDC_MINT, logo: SolLogo },
+];
 
 export default function SwapPage() {
   const [fromAmount, setFromAmount] = useState('');
   const [toAmount, setToAmount] = useState('');
   const [isSwapped, setIsSwapped] = useState(false);
   const [walletConnected, setWalletConnected] = useState(false);
-  const [walletPublicKey, setWalletPublicKey] = useState<PublicKey | null>(null);
+  const [walletPublicKey, setWalletPublicKey] = useState(null);
   const [swapStatus, setSwapStatus] = useState('');
+  const [selectedStablecoin, setSelectedStablecoin] = useState(stablecoins[0]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const checkPhantomWallet = async () => {
@@ -38,7 +47,6 @@ export default function SwapPage() {
           setWalletConnected(true);
           setWalletPublicKey(resp.publicKey);
         } catch (err) {
-          // User has not connected to the app before or has explicitly disconnected
           console.error('Failed to connect to Phantom wallet:', err);
         }
       }
@@ -68,15 +76,15 @@ export default function SwapPage() {
       const swapInstruction = await createSwapInstruction(
         connection,
         walletPublicKey,
-        SOLRAIN_MINT,
-        USDT_MINT,
+        isSwapped ? selectedStablecoin.mint : SOLRAIN_MINT,
+        isSwapped ? SOLRAIN_MINT : selectedStablecoin.mint,
         parseFloat(fromAmount),
         parseFloat(toAmount)
       );
       transaction.add(swapInstruction);
 
       const toTokenAccount = await getAssociatedTokenAddress(
-        USDT_MINT,
+        isSwapped ? SOLRAIN_MINT : selectedStablecoin.mint,
         walletPublicKey,
         false,
         TOKEN_PROGRAM_ID,
@@ -88,7 +96,7 @@ export default function SwapPage() {
           walletPublicKey,
           toTokenAccount,
           walletPublicKey,
-          USDT_MINT,
+          isSwapped ? SOLRAIN_MINT : selectedStablecoin.mint,
           TOKEN_PROGRAM_ID,
           ASSOCIATED_TOKEN_PROGRAM_ID
         );
@@ -143,7 +151,7 @@ export default function SwapPage() {
               <div>
                 <label className="block text-sm font-medium mb-2">From</label>
                 <div className="flex items-center bg-gray-700/50 rounded-lg p-3">
-                  <Image width={32} height={32} src={isSwapped ? usdtLogo : coinImage} alt={isSwapped ? "USDT" : "SOLRAIN"} className="mr-3" />
+                  <Image width={32} height={32} src={isSwapped ? selectedStablecoin.logo : coinImage} alt={isSwapped ? selectedStablecoin.name : "SOLRAIN"} className="mr-3" />
                   <input
                     type="number"
                     value={fromAmount}
@@ -151,7 +159,7 @@ export default function SwapPage() {
                     placeholder="0.00"
                     className="bg-transparent text-white text-lg w-full focus:outline-none"
                   />
-                  <span className="text-sm text-gray-400">{isSwapped ? "USDT" : "SOLRAIN"}</span>
+                  <span className="text-sm text-gray-400">{isSwapped ? selectedStablecoin.name : "SOLRAIN"}</span>
                 </div>
               </div>
 
@@ -164,7 +172,7 @@ export default function SwapPage() {
               <div>
                 <label className="block text-sm font-medium mb-2">To</label>
                 <div className="flex items-center bg-gray-700/50 rounded-lg p-3">
-                  <Image width={32} height={32} src={isSwapped ? coinImage : usdtLogo} alt={isSwapped ? "SOLRAIN" : "USDT"} className="mr-3" />
+                  <Image width={32} height={32} src={isSwapped ? coinImage : selectedStablecoin.logo} alt={isSwapped ? "SOLRAIN" : selectedStablecoin.name} className="mr-3" />
                   <input
                     type="number"
                     value={toAmount}
@@ -172,20 +180,46 @@ export default function SwapPage() {
                     placeholder="0.00"
                     className="bg-transparent text-white text-lg w-full focus:outline-none"
                   />
-                  <span className="text-sm text-gray-400">{isSwapped ? "SOLRAIN" : "USDT"}</span>
+                  {isSwapped ? (
+                    <span className="text-sm text-gray-400">SOLRAIN</span>
+                  ) : (
+                    <div className="relative">
+                      <button
+                        onClick={() => setDropdownOpen(!dropdownOpen)}
+                        className="flex items-center text-sm text-gray-400 focus:outline-none"
+                      >
+                        {selectedStablecoin.name}
+                        <ChevronDown size={16} className="ml-1" />
+                      </button>
+                      {dropdownOpen && (
+                        <div className="absolute right-0 mt-2 w-24 bg-gray-700 rounded-md shadow-lg z-10">
+                          {stablecoins.map((coin) => (
+                            <button
+                              key={coin.name}
+                              onClick={() => {
+                                setSelectedStablecoin(coin);
+                                setDropdownOpen(false);
+                              }}
+                              className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-600 focus:outline-none"
+                            >
+                              {coin.name}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
 
               <button
                 onClick={walletConnected ? handleSwap : connectWallet}
-                className="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-lg transition-colors"
+                className="w-full mt-6 py-3 text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-600 text-white rounded-lg shadow-md hover:opacity-90 transition-opacity"
               >
-                {walletConnected ? "Swap" : "Connect Wallet"}
+                {walletConnected ? 'Swap Now' : 'Connect Wallet'}
               </button>
 
-              {swapStatus && (
-                <p className="text-center mt-4 text-yellow-500">{swapStatus}</p>
-              )}
+              {swapStatus && <p className="text-center text-sm text-red-500 mt-4">{swapStatus}</p>}
             </div>
           </div>
         </div>

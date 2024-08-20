@@ -11,7 +11,7 @@ const navigation = [
   { name: "Solrain exchange", href: "/swap" },
   { name: "Dapp", href: "/dApp" },
   { name: "NFT Marketplace", href: "/nft-marketplace" },
-  { name: "Roadmap", href: "/assets/solrain.pdf" },
+  { name: "Roadmap", href: "/roadmap" },
   { name: "Whitepaper", href: "/assets/solrain.pdf" },
   { name: "Gitbook docs", href: "https://solrain.gitbook.io" },
 ];
