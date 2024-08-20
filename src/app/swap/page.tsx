@@ -34,7 +34,7 @@ export default function SwapPage() {
   const [toAmount, setToAmount] = useState('');
   const [isSwapped, setIsSwapped] = useState(false);
   const [walletConnected, setWalletConnected] = useState(false);
-  const [walletPublicKey, setWalletPublicKey] = useState(null);
+  const [walletPublicKey, setWalletPublicKey] = useState<PublicKey | null>(null);  // Specify the type here
   const [swapStatus, setSwapStatus] = useState('');
   const [selectedStablecoin, setSelectedStablecoin] = useState(stablecoins[0]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -200,7 +200,7 @@ export default function SwapPage() {
                                 setSelectedStablecoin(coin);
                                 setDropdownOpen(false);
                               }}
-                              className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-600 focus:outline-none"
+                              className="block w-full text-left px-4 py-2 text-sm text-gray-400 hover:bg-gray-600"
                             >
                               {coin.name}
                             </button>
@@ -214,12 +214,11 @@ export default function SwapPage() {
 
               <button
                 onClick={walletConnected ? handleSwap : connectWallet}
-                className="w-full mt-6 py-3 text-lg font-semibold bg-gradient-to-r from-blue-400 to-purple-600 text-white rounded-lg shadow-md hover:opacity-90 transition-opacity"
+                className="w-full py-3 rounded-lg bg-blue-500 hover:bg-blue-400 text-white font-semibold text-lg transition-colors"
               >
-                {walletConnected ? 'Swap Now' : 'Connect Wallet'}
+                {walletConnected ? 'Swap' : 'Connect Wallet'}
               </button>
-
-              {swapStatus && <p className="text-center text-sm text-red-500 mt-4">{swapStatus}</p>}
+              {swapStatus && <p className="text-sm text-center text-gray-400 mt-4">{swapStatus}</p>}
             </div>
           </div>
         </div>
