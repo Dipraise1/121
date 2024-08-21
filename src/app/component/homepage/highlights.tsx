@@ -21,9 +21,9 @@ export default function Highlights() {
   return (
     <>
       <div className="w-full max-w-7xl mx-auto px-5 my-12">
-        <div className="flex gap-5 w-full overflow-x-auto md:grid md:grid-cols-5">
-          <div className="flex flex-col gap-5 items-center md:items-center flex-shrink-0">
-            <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center">
+        <div className="flex flex-col md:flex-row gap-5 w-full overflow-x-auto">
+          <div className="flex flex-col gap-5 items-center md:items-end flex-shrink-0">
+            <div className="w-20 h-20 flex-shrink-0 flex justify-end items-center">
               <Image width={82} height={82} src={lowGas} alt="solrain-coin" />
             </div>
             <div className="flex flex-col md:items-center items-center text-center">
@@ -47,8 +47,8 @@ export default function Highlights() {
               )}
             </div>
           </div>
-          <div className="flex flex-col gap-5 items-center md:items-center flex-shrink-0">
-            <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center">
+          <div className="flex flex-col gap-5 items-center md:items-end flex-shrink-0">
+            <div className="w-20 h-20 flex-shrink-0 flex justify-end items-center">
               <Image width={82} height={82} src={daily} alt="solrain-coin" />
             </div>
             <div className="flex flex-col md:items-center items-center text-center">
@@ -74,8 +74,8 @@ export default function Highlights() {
               )}
             </div>
           </div>
-          <div className="flex flex-col gap-5 items-center md:items-center flex-shrink-0">
-            <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center">
+          <div className="flex flex-col gap-5 items-center md:items-end flex-shrink-0">
+            <div className="w-20 h-20 flex-shrink-0 flex justify-end items-center">
               <Image
                 width={82}
                 height={82}
@@ -96,8 +96,8 @@ export default function Highlights() {
               </a>
             </div>
           </div>
-          <div className="flex flex-col gap-5 items-center md:items-center flex-shrink-0">
-            <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center">
+          <div className="flex flex-col gap-5 items-center md:items-end flex-shrink-0">
+            <div className="w-20 h-20 flex-shrink-0 flex justify-end items-center">
               <Image width={82} height={82} src={paper} alt="solrain-coin" />
             </div>
             <div className="flex flex-col md:items-center items-center text-center">
@@ -112,8 +112,8 @@ export default function Highlights() {
               </a>
             </div>
           </div>
-          <div className="flex flex-col gap-5 items-center md:items-center flex-shrink-0">
-            <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center">
+          <div className="flex flex-col gap-5 items-center md:items-end flex-shrink-0">
+            <div className="w-20 h-20 flex-shrink-0 flex justify-end items-center">
               <Image width={82} height={82} src={exchange} alt="solrain-coin" />
             </div>
             <div className="flex flex-col md:items-center items-center text-center">
