@@ -21,12 +21,12 @@ export default function Highlights() {
   return (
     <>
       <div className="w-full max-w-7xl mx-auto px-5 my-12">
-        <div className="flex flex-col md:flex-row gap-5 w-full overflow-x-auto">
-          <div className="flex flex-col gap-5 items-center md:items-end flex-shrink-0">
-            <div className="w-20 h-20 flex-shrink-0 flex justify-end items-center">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-5 w-full">
+          <div className="flex md:flex-col flex-row gap-5 items-center">
+            <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center">
               <Image width={82} height={82} src={lowGas} alt="solrain-coin" />
             </div>
-            <div className="flex flex-col md:items-center items-center text-center">
+            <div className="flex flex-col md:items-center items-start">
               <h3 className="text-xl mt-3 font-semibold">Low gas fees</h3>
               {!isVisible && (
                 <button
@@ -47,11 +47,11 @@ export default function Highlights() {
               )}
             </div>
           </div>
-          <div className="flex flex-col gap-5 items-center md:items-end flex-shrink-0">
-            <div className="w-20 h-20 flex-shrink-0 flex justify-end items-center">
+          <div className="flex md:flex-col flex-row gap-5 items-center">
+            <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center">
               <Image width={82} height={82} src={daily} alt="solrain-coin" />
             </div>
-            <div className="flex flex-col md:items-center items-center text-center">
+            <div className="flex flex-col md:items-center items-start">
               <h3 className="text-xl mt-3 font-semibold">
                 1% daily for 365 days
               </h3>
@@ -74,8 +74,8 @@ export default function Highlights() {
               )}
             </div>
           </div>
-          <div className="flex flex-col gap-5 items-center md:items-end flex-shrink-0">
-            <div className="w-20 h-20 flex-shrink-0 flex justify-end items-center">
+          <div className="flex md:flex-col flex-row gap-5 items-center">
+            <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center">
               <Image
                 width={82}
                 height={82}
@@ -83,7 +83,7 @@ export default function Highlights() {
                 alt="solrain-coin"
               />
             </div>
-            <div className="flex flex-col md:items-center items-center text-center">
+            <div className="flex flex-col md:items-center items-start">
               <h3 className="text-xl mt-3 font-semibold">
                 Compounding Interest
               </h3>
@@ -96,30 +96,29 @@ export default function Highlights() {
               </a>
             </div>
           </div>
-          <div className="flex flex-col gap-5 items-center md:items-end flex-shrink-0">
-            <div className="w-20 h-20 flex-shrink-0 flex justify-end items-center">
+          <div className="flex md:flex-col flex-row gap-5 items-center">
+            <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center">
               <Image width={82} height={82} src={paper} alt="solrain-coin" />
             </div>
-            <div className="flex flex-col md:items-center items-center text-center">
+            <div className="flex flex-col md:items-center items-start">
               <h3 className="text-xl mt-3 font-semibold">White Paper</h3>
               <a 
-                href="/assets/solrain.pdf" 
-                target="_blank"
-                rel="noreferrer"
-                className="cut-corners-outline mt-5"
-              >
+              href="assets/SOLRAIN_WHITEPAPER.pdf" 
+              target="_blank"
+              rel="noreferrer"
+              className="cut-corners-outline mt-5">
                 Info
               </a>
             </div>
           </div>
-          <div className="flex flex-col gap-5 items-center md:items-end flex-shrink-0">
-            <div className="w-20 h-20 flex-shrink-0 flex justify-end items-center">
+          <div className="flex md:flex-col flex-row gap-5 items-center">
+            <div className="w-20 h-20 flex-shrink-0 flex justify-center items-center">
               <Image width={82} height={82} src={exchange} alt="solrain-coin" />
             </div>
-            <div className="flex flex-col md:items-center items-center text-center">
+            <div className="flex flex-col md:items-center items-start">
               <h3 className="text-xl mt-3 font-semibold">Exchange</h3>
               <a
-                href="/swap"
+                href="https://jup.ag/"
                 target="_blank"
                 className="cut-corners-outline mt-5"
               >
