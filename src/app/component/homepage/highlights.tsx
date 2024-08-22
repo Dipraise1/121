@@ -103,7 +103,7 @@ export default function Highlights() {
             <div className="flex flex-col md:items-center items-start">
               <h3 className="text-xl mt-3 font-semibold">White Paper</h3>
               <a 
-              href="assets/SOLRAIN_WHITEPAPER.pdf" 
+              href="assets/solrain.pdf" 
               target="_blank"
               rel="noreferrer"
               className="cut-corners-outline mt-5">
